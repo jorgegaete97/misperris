@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>nombre</td>
+			<td>apellido</td>
+			<td>rut</td>
+			<td>telefono</td>
+			<td>email</td>
+			<td>fecha</td>
+			<td>region</td>
+			<td>ciudad</td>
+			<td>vivienda</td>
+		</tr>
+	</thead>
+
+	<tbody>
+
+<div align="center">
+	<h1 style="font-family: times;" > VER PERSONAS CONTACTADAS </h1>
+</div>
+<br>
+
+		{% if contactos %}
+		{% for contacto in contactos %}
+		<tr>
+			<td>{{ contacto.nombres }}</td>
+			<td>{{ contacto.apellidos }}</td>
+			<td>{{ contacto.rut }}</td>
+			<td>{{ contacto.telefono }}</td>
+			<td>{{ contacto.email }}</td>
+			<td>{{ contacto.fecha }}</td>
+			<td>{{ contacto.region }}</td>
+			<td>{{ contacto.ciudad }}</td>
+			<td>{{ contacto.vivienda }}</td>
+			
+		</tr>
+		{% endfor %}
+		{% else %}
+
+		<h1>No hay contactos </h1>
+
+		{% endif %}
+
+	</tbody>
+
+</table>
+
+
+{% endblock %}

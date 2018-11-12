@@ -1,0 +1,20 @@
+
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div align="center">
+	<h1 style="font-family: times;" > CONTACTAR AL SERVICIO </h1>
+</div>
+
+<form method="post" style="margin:20px 100px">
+
+	{% csrf_token %}
+
+	{{ form.as_p }}
+<br>
+	<button type="submit"> Guardar</button>
+
+</form>
+{% endblock %}

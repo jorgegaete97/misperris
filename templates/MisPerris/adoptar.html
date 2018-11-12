@@ -1,0 +1,103 @@
+{% extends 'base/base_cliente.html' %}
+
+{% block content %}
+
+<table class="table table-bordered" style="width: 100%">
+	<thead>
+		<tr>
+			<td><center><h3>NOMBRE</h3></center></td>
+			<td><center><h3>EDAD</h3></center></td>
+			<td><center><h3>RAZA</h3></center></td>
+			<td><center><h3>FECHA DE RESCATE</h3></center></td>
+			<td><center><h3>ESTADO</h3></center></td>
+			<td><center><h3>FOTO</h3></center></td>
+			<td><center></center></td>
+		</tr>
+	</thead>
+
+	<tbody>
+
+<div align="center">
+	<h1 style="font-family: times;" > AQUI PODRAS VER MASCOTAS QUE ESTEN DISPONIBLES PARA ADOPTAR, </h1>
+	<h1 style="font-family: times;" > TANTO COMO LAS QUE YA HAN SIDO ADOPTADAS. </h1>
+</div>
+<br>
+
+
+{% if mascotas %}
+		{% for mascota in mascotas %}
+
+		<tr>
+			<td style="width:10%">  
+				<center>
+				{{ mascota.nombre }}					
+				</center>
+			</td>
+
+			<td style="width:5%">
+				<center>
+					{{ mascota.edad }}
+				</center>
+			</td>
+
+			<td style="width:10%">
+				<center>
+					{{ mascota.raza }}
+				</center>
+			</td>
+
+			<td style="width:20%">
+				<center>
+					{{ mascota.FechaRescate }}
+				</center>
+			</td>
+
+			<td style="width:5%">
+				<center>
+					{{ mascota.estado }}
+				</center>
+			</td>
+
+			<td style="width:25%"> 
+				<center>
+					<img style="width:200px; height: 200px;"  src="{{ mascota.Foto.url }}"> 
+				</center>
+			</td>
+
+
+
+			{% if mascota.estado == 'Disponible' %}
+
+			<td style="width:25%"> 
+				<center>
+					<a class="btn btn-primary" href="{% url 'index:mascota_editar' mascota.nombre %}">Adoptar</a>
+				</center>
+			</td>
+
+			{% else %}
+
+				<td style="width:25%"> 
+					<center>
+						Esta mascota ya ha sido adoptada 
+					</center>
+				</td>
+
+			{% endif %}
+
+		</tr>
+
+		{% endfor %}
+
+		{% else %}
+
+		<h1>No hay mascotas rescatadas</h1>
+
+		{% endif %}
+		
+
+
+</tbody>
+</table>
+
+
+{% endblock %}

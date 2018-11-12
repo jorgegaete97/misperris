@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td><center>NOMBRE</center></td>
+			<td><center>EDAD</center></td>
+			<td><center>RAZA</center></td>
+			<td><center>FECHA DE RESCATE</center></td>
+			<td><center>ESTADO</center></td>
+			<td><center>FOTO</center></td>
+		</tr>
+	</thead>
+
+	<tbody>
+
+<div align="center">
+	<h1 style="font-family: times;" > VER LISTA DE MASCOTAS RESCATADAS </h1>
+</div>
+<br>
+
+		{% if mascotas %}
+		{% for mascota in mascotas %}
+		<tr>
+			<td><center>{{ mascota.nombre }}</center></td>
+			<td><center>{{ mascota.edad }}</center></td>
+			<td><center>{{ mascota.raza }}</center></td>
+			<td><center>{{ mascota.FechaRescate }}</center></td>
+			<td><center>{{ mascota.estado }}</center></td>
+			<td><center><img style="width:200px;height: 200px;"  src="{{ mascota.Foto.url }}"></center></td>
+		</tr>
+		{% endfor %}
+		{% else %}
+
+		<h1>No hay mascotas rescatadas</h1>
+
+		{% endif %}
+
+	</tbody>
+
+</table>
+
+
+{% endblock %}

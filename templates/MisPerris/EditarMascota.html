@@ -1,0 +1,96 @@
+{% extends 'base/base_cliente.html' %}
+{% load staticfiles %}
+
+<!DOCTYPE html5>
+<html>
+<head>
+
+	<title>Exito</title>
+
+<script type="text/javascript"> 
+
+function pregunta(){ 
+    if (confirm('¿Deseas guardar los cambios?')){ 
+       document.tuformulario.submit() 
+    } 
+} 
+
+function onLoadBody(){
+	document.getElementById("id_nombre").readOnly=true;
+	document.getElementById("id_edad").readOnly=true;
+	document.getElementById("id_raza").readOnly=true;
+}
+
+
+</script>
+
+</head>
+
+
+
+<body onload = "onLoadBody()" >
+
+	<div style="background-color: #F5F5F5;">
+
+<center>
+
+	<H1>ACA PODRAS ADOPTAR A LA MASCOTA QUE ESCOGISTE</H1>
+
+</center>
+
+<br>
+
+<center>
+	<h2>Para adoptarla y darle un mejor hogar es bien facil,</h2>
+	<h2>solo debes cambiar su estado a adoptado.</h2>
+	<h2>El estara muy agradecido con tigo por esto.</h2>
+	<br>
+</center>
+		
+	</div>
+
+
+<div style="background-color: aquamarine;">
+
+{% block content %}
+
+<div align="center">
+	<h1 style="font-family: times;" > Mascota Seleccionada </h1>
+</div>
+
+<form method="POST" style="margin:20px 100px" enctype="multipart/form-data">
+
+	{% csrf_token %}
+<h2>Nombre</h2>
+	{{ form.nombre }}
+<h2>Edad</h2>	
+	{{ form.edad }}
+<h2>Raza</h2>
+	{{ form.raza }}
+<h2>Fecha de rescate</h2>
+	{{ form.FechaRescate }}
+<h2>Estado</h2>
+	{{ form.estado }}
+	
+<br>
+<input class="btn btn-primary btn-block btn-success" value="Guardar" type="submit">
+
+</form>
+
+{% endblock %}
+	
+</div>
+
+<div id="Finalizar" style=" bottom: 0; width: 100%; height: 100px; float: left; background-color: #F5F5F5;margin-top: 20px">
+
+    <br>
+            <pre id="jj">     Desarrollo web y movile </pre>
+    <br>
+    <br>
+    <br>
+    <br>
+
+</div>
+
+</body>
+</html>
